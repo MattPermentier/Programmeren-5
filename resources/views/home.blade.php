@@ -10,5 +10,16 @@
 <body>
     <h1>Test</h1>
 
+@foreach($bikes as $bike)
+    <table>
+        <th>Brand</th>
+    <tr>
+        <td>{{$bike->brand}}</td>
+    </tr>
+    </table>
+@endforeach
+
+
+
 </body>
 </html>
