@@ -4,17 +4,32 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+            <table>
+                <th>Brand</th>
+                <th>|</th>
+                <th>Category</th>
+                <th>|</th>
+                <th>Model Name</th>
+                <th>|</th>
+                <th>Description</th>
+                <th>|</th>
+                <th>Image</th>
 
-                    {{ __('You are logged in!') }}
+                @foreach($bikes as $bike)
+                    <tr>
+                        <td>{{ $bike->brand }}</td>
+                        <td></td>
+                        <td>{{ $bike->category }}</td>
+                        <td></td>
+                        <td>{{ $bike->model_name }}</td>
+                        <td></td>
+                        <td>{{ $bike->description }}</td>
+                        <td></td>
+                        <td>{{ $bike->image }}</td>
+                    </tr>
+            @endforeach
+            </table>
                 </div>
             </div>
         </div>
