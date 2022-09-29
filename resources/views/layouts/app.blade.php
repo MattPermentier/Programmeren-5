@@ -33,7 +33,7 @@
 
                     </ul>
 
-                    <a href="/add_new_bike">Add New Bike</a>
+                    <a href="/addNewBike">Add New Bike</a>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
