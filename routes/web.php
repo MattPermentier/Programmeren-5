@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BikesController;
 use App\Http\Controllers\DeleteBikeController;
 use App\Http\Controllers\EditBikeController;
 use App\Http\Controllers\HomeController;
@@ -24,6 +25,8 @@ Route::get('/', [HomeController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/bikes', [BikesController::class, 'bikes'])->name('bikes');
+
 
 Route::get('addNewBike', [AddNewBikeController::class, 'show']);
 Route::get('add', [AddNewBikeController::class, 'add']);
