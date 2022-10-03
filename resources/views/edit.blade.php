@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="col-md-6 col-md-offset-3">
-    <h1>Add New Bike</h1>
+    <h1>Edit Bike</h1>
 
     @if(Session::get('success'))
         <div class="alert alert-success">
@@ -25,14 +25,15 @@
         </div>
     @endif
 
-    <form action="add" method="get">
+    <form action="{{ route('update') }}" method="get">
 
         @csrf
+        <input type="hidden" name="cid" value="{{ $Info->id }}">
 
         <div class="form-group">
             <label for="">Brand</label>
             <select name="brand" class="form-control">
-                <option value="" disabled selected>Select a Brand</option>
+                <option value="{{ $Info->brand }}" selected>{{ $Info->brand }}</option>
                 <option value="Aprilia">Aprilia</option>
                 <option value="BMW">BMW</option>
                 <option value="Ducati">Ducati</option>
@@ -52,14 +53,14 @@
         <div class="form-group">
             <label for="">Model Name</label>
             <input type="text" class="form-control" name="modelName" placeholder="Model Name"
-                   value="{{ old('modelName') }}">
+                   value="{{ $Info->model_name }}">
             <span style="color:red">@error('modelName'){{ $message }} @enderror</span>
         </div>
 
         <div class="form-group">
             <label for="">Category</label>
-            <select name="category" class="form-control">
-                <option value="" disabled selected>Select a Category</option>
+            <select name="category" class="form-control" placeholder="Category" >
+                <option value="{{ $Info->category }}">{{ $Info->category }}</option>
                 <option value="All-Road">All-Road</option>
                 <option value="Naked">Naked</option>
                 <option value="Sport">Sport</option>
@@ -73,24 +74,18 @@
         <div class="form-group">
             <label for="">Description</label>
             <input type="text" class="form-control" name="description" placeholder="Description"
-                   value="{{ old('description') }}">
+                   value="{{ $Info->description }}">
             <span style="color:red">@error('description'){{ $message }} @enderror</span>
         </div>
 
         <div class="form-group">
             <label for="">Image</label>
-            <input type="file" name="image" placeholder="Image" value="{{ old('image') }}">
+            <input type="text" class="form-control" name="image" placeholder="Image" value="{{ $Info->image }}">
             <span style="color:red">@error('image'){{ $message }} @enderror</span>
         </div>
 
-{{--        <div class="form-group">--}}
-{{--            <label for="">Image</label>--}}
-{{--            <input type="text" class="form-control" name="image" placeholder="Image" value="{{ old('image') }}">--}}
-{{--            <span style="color:red">@error('image'){{ $message }} @enderror</span>--}}
-{{--        </div>--}}
-
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Save</button>
+            <button type="submit" class="btn btn-primary btn-block">Update</button>
         </div>
 
         <a href="/">Go back</a>
@@ -98,3 +93,5 @@
 </div>
 </body>
 </html>
+
+

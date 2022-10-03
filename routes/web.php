@@ -21,4 +21,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('addNewBike', [App\Http\Controllers\AddNewBikeController::class, 'show'])->name('addNewBike');
+Route::get('addNewBike', [App\Http\Controllers\AddNewBikeController::class, 'show']);
+Route::get('add', [App\Http\Controllers\AddNewBikeController::class, 'add']);
+Route::get('edit/{id}', [App\Http\Controllers\AddNewBikeController::class, 'edit']);
+Route::get('update', [App\Http\Controllers\AddNewBikeController::class, 'update'])->name('update');
+Route::get('delete/{id}', [App\Http\Controllers\AddNewBikeController::class, 'delete']);
+
