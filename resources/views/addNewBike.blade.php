@@ -32,7 +32,7 @@
         <div class="form-group">
             <label for="">Brand</label>
             <select name="brand" class="form-control">
-                <option value="" disabled selected>Select a Brand</option>
+                <option value="{{ old('brand') }}" disabled selected>Select a Brand</option>
                 <option value="Aprilia">Aprilia</option>
                 <option value="BMW">BMW</option>
                 <option value="Ducati">Ducati</option>
@@ -59,7 +59,7 @@
         <div class="form-group">
             <label for="">Category</label>
             <select name="category" class="form-control">
-                <option value="" disabled selected>Select a Category</option>
+                <option value="{{ old('category') }}" disabled selected>Select a Category</option>
                 <option value="All-Road">All-Road</option>
                 <option value="Naked">Naked</option>
                 <option value="Sport">Sport</option>
@@ -77,17 +77,17 @@
             <span style="color:red">@error('description'){{ $message }} @enderror</span>
         </div>
 
-        <div class="form-group">
-            <label for="">Image</label>
-            <input type="file" name="image" placeholder="Image" value="{{ old('image') }}">
-            <span style="color:red">@error('image'){{ $message }} @enderror</span>
-        </div>
-
 {{--        <div class="form-group">--}}
 {{--            <label for="">Image</label>--}}
-{{--            <input type="text" class="form-control" name="image" placeholder="Image" value="{{ old('image') }}">--}}
+{{--            <input type="file" name="image" placeholder="Image" value="{{ old('image') }}">--}}
 {{--            <span style="color:red">@error('image'){{ $message }} @enderror</span>--}}
 {{--        </div>--}}
+
+        <div class="form-group">
+            <label for="">Image</label>
+            <input type="text" class="form-control" name="image" placeholder="Image" value="{{ old('image') }}">
+            <span style="color:red">@error('image'){{ $message }} @enderror</span>
+        </div>
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Save</button>

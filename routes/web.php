@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\DeleteBikeController;
+use App\Http\Controllers\EditBikeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UpdateBikeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddNewBikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +25,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('addNewBike', [App\Http\Controllers\AddNewBikeController::class, 'show']);
-Route::get('add', [App\Http\Controllers\AddNewBikeController::class, 'add']);
-Route::get('edit/{id}', [App\Http\Controllers\AddNewBikeController::class, 'edit']);
-Route::get('update', [App\Http\Controllers\AddNewBikeController::class, 'update'])->name('update');
-Route::get('delete/{id}', [App\Http\Controllers\AddNewBikeController::class, 'delete']);
+Route::get('addNewBike', [AddNewBikeController::class, 'show']);
+Route::get('add', [AddNewBikeController::class, 'add']);
+
+Route::get('edit/{id}', [EditBikeController::class, 'edit']);
+Route::get('update', [UpdateBikeController::class, 'update'])->name('update');
+Route::get('delete/{id}', [DeleteBikeController::class, 'delete']);
+
+
 
