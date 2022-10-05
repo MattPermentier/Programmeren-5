@@ -80,7 +80,7 @@
                     <button type="submit" class="btn btn-primary btn-block">Update</button>
                 </div>
 
-                <a href="/">Go back</a>
+                <a href="/bikes">Go back</a>
             </form>
         </div>
     </div>
