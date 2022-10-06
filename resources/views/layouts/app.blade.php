@@ -37,7 +37,7 @@
 
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a href="/bikes" class="nav-link">All Bikes</a></li>
-                    <li class="nav-item"><a href="/bike" class="nav-link">Your Bikes</a></li>
+                    <li class="nav-item"><a href="/yourBikes" class="nav-link">Your Bikes</a></li>
                     <li class="nav-item"><a href="/addNewBike" class="nav-link">Add New Bike</a></li>
                 </ul>
 
@@ -84,6 +84,7 @@
     <main class="py-4">
         @yield('content')
         @yield('bikes')
+        @yield('yourBikes')
         @yield('edit')
         @yield('add')
     </main>
