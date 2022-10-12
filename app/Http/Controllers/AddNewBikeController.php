@@ -17,7 +17,7 @@ class AddNewBikeController extends Controller
     {
         $request->validate([
             'brand' => 'required',
-            'modelName' => 'required',
+            'model' => 'required',
             'category' => 'required',
             'description' => 'required',
             'image' => 'required'
@@ -25,7 +25,7 @@ class AddNewBikeController extends Controller
 
         $query = DB::table('bikes')->insert([
             'brand' => $request->input('brand'),
-            'model_name' => $request->input('modelName'),
+            'model' => $request->input('model'),
             'category' => $request->input('category'),
             'description' => $request->input('description'),
             'image' => $request->input('image')

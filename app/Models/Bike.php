@@ -10,4 +10,12 @@ class Bike extends Model
     use HasFactory;
 
     protected $table = 'bikes';
+
+    protected $fillable = [
+        'brand',
+        'model',
+        'category',
+        'description',
+        'image'
+];
 }

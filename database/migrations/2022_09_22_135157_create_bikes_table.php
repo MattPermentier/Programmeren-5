@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('brand');
             $table->string('category');
-            $table->string('model_name');
+            $table->string('model');
             $table->text('description');
             $table->text('image')->nullable();
             $table->timestamps();

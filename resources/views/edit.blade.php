@@ -44,9 +44,9 @@
 
                 <div class="form-group">
                     <label for="">Model Name</label>
-                    <input type="text" class="form-control" name="modelName" placeholder="Model Name"
-                           value="{{ $Info->model_name }}">
-                    <span style="color:red">@error('modelName'){{ $message }} @enderror</span>
+                    <input type="text" class="form-control" name="model" placeholder="Model Name"
+                           value="{{ $Info->model }}">
+                    <span style="color:red">@error('model'){{ $message }} @enderror</span>
                 </div>
 
                 <div class="form-group">

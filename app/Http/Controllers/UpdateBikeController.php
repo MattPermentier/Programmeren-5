@@ -11,7 +11,7 @@ class UpdateBikeController extends Controller
     {
         $request->validate([
             'brand' => 'required',
-            'modelName' => 'required',
+            'model' => 'required',
             'category' => 'required',
             'description' => 'required',
             'image' => 'required'
@@ -21,7 +21,7 @@ class UpdateBikeController extends Controller
             ->where('id', $request->input('cid'))
             ->update([
                 'brand'=>$request->input('brand'),
-                'model_name'=>$request->input('modelName'),
+                'model'=>$request->input('model'),
                 'category'=>$request->input('category'),
                 'description'=>$request->input('description'),
                 'image'=>$request->input('image'),
