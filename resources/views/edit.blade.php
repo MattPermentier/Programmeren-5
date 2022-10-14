@@ -17,15 +17,16 @@
                 </div>
             @endif
 
-            <form action="{{ route('update') }}" method="get">
+            <form action="{{ route('bike.update', $bike->id) }}" method="post">
+                @method('PUT')
 
                 @csrf
-                <input type="hidden" name="cid" value="{{ $Info->id }}">
+                <input type="hidden" name="cid" value="{{ $bike->id }}">
 
                 <div class="form-group">
                     <label for="">Brand</label>
                     <select name="brand" class="form-control">
-                        <option value="{{ $Info->brand }}" selected>{{ $Info->brand }}</option>
+                        <option value="{{ $bike->brand }}" selected>{{ $bike->brand }}</option>
                         <option value="Aprilia">Aprilia</option>
                         <option value="BMW">BMW</option>
                         <option value="Ducati">Ducati</option>
@@ -45,14 +46,14 @@
                 <div class="form-group">
                     <label for="">Model Name</label>
                     <input type="text" class="form-control" name="model" placeholder="Model Name"
-                           value="{{ $Info->model }}">
+                           value="{{ $bike->model }}">
                     <span style="color:red">@error('model'){{ $message }} @enderror</span>
                 </div>
 
                 <div class="form-group">
                     <label for="">Category</label>
                     <select name="category" class="form-control" placeholder="Category">
-                        <option value="{{ $Info->category }}">{{ $Info->category }}</option>
+                        <option value="{{ $bike->category }}">{{ $bike->category }}</option>
                         <option value="All-Road">All-Road</option>
                         <option value="Naked">Naked</option>
                         <option value="Sport">Sport</option>
@@ -66,21 +67,20 @@
                 <div class="form-group">
                     <label for="">Description</label>
                     <input type="text" class="form-control" name="description" placeholder="Description"
-                           value="{{ $Info->description }}">
+                           value="{{ $bike->description }}">
                     <span style="color:red">@error('description'){{ $message }} @enderror</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Image</label>
-                    <input type="text" class="form-control" name="image" placeholder="Image" value="{{ $Info->image }}">
-                    <span style="color:red">@error('image'){{ $message }} @enderror</span>
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="">Image</label>--}}
+{{--                    <input type="text" class="form-control" name="image" placeholder="Image" value="{{ $bike->image }}">--}}
+{{--                    <span style="color:red">@error('image'){{ $message }} @enderror</span>--}}
+{{--                </div>--}}
 
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 10px">
                     <button type="submit" class="btn btn-primary btn-block">Update</button>
                 </div>
 
-                <a href="/bikes">Go back</a>
             </form>
         </div>
     </div>

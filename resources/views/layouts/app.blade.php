@@ -84,7 +84,7 @@
     <main class="py-4">
         @yield('content')
         @yield('bikes')
-        @yield('yourBikes')
+        @yield('bike')
         @yield('edit')
         @yield('add')
     </main>

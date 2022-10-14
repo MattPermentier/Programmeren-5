@@ -69,18 +69,17 @@
                     <span style="color:red">@error('description'){{ $message }} @enderror</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Image</label>
-                    <input type="file" name="image" placeholder="Image" value="{{ old('image') }}">
-                    <span style="color:red">@error('image'){{ $message }} @enderror</span>
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="">Image</label>--}}
+{{--                    <input type="file" name="image" placeholder="Image" value="{{ old('image') }}">--}}
+{{--                    <span style="color:red">@error('image'){{ $message }} @enderror</span>--}}
+{{--                </div>--}}
 
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Save</button>
                 </div>
 
-                <a href="/bikes">Go back</a>
             </form>
         </div>
     </div>

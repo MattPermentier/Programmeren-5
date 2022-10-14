@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\BikesController;
-use App\Http\Controllers\DeleteBikeController;
-use App\Http\Controllers\EditBikeController;
+
+use App\Http\Controllers\BikeController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UpdateBikeController;
 use App\Http\Controllers\YourBikeController;
 use App\Models\Bike;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AddNewBikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,20 +20,9 @@ use App\Http\Controllers\AddNewBikeController;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/yourBikes', [YourBikeController::class, 'yourBikes']);
+Route::get('/bikes', [BikeController::class, 'index']);
 
-//Route::get('addNewBike', [AddNewBikeController::class, 'show']);
-//Route::get('add', [AddNewBikeController::class, 'add']);
-
-Route::get('edit/{id}', [EditBikeController::class, 'edit']);
-Route::get('update', [UpdateBikeController::class, 'update'])->name('update');
-Route::get('delete/{id}', [DeleteBikeController::class, 'delete']);
-
-
-
-Route::get('/bikes', [\App\Http\Controllers\CrudBikeController::class, 'index']);
-Route::resource('bike', \App\Http\Controllers\CrudBikeController::class);
+Route::resource('bike', BikeController::class);
 

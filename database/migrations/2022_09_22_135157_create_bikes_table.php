@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('bikes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('brand');
             $table->string('category');
             $table->string('model');
             $table->text('description');
-            $table->text('image')->nullable();
+
+//            $table->text('image')->nullable();
             $table->timestamps();
         });
     }
