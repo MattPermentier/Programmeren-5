@@ -87,6 +87,7 @@
         @yield('bike')
         @yield('edit')
         @yield('add')
+        @yield('category')
     </main>
 </div>
 </body>

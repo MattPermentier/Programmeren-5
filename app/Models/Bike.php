@@ -12,10 +12,11 @@ class Bike extends Model
     protected $table = 'bikes';
 
     protected $fillable = [
+        'user_id',
         'brand',
         'model',
         'category',
         'description',
         'image'
-];
+    ];
 }
