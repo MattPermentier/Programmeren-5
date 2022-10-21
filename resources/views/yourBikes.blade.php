@@ -15,19 +15,22 @@
                             <h6>{{ $bike->category }}</h6>
                             <p class="card-text">{{ $bike->description }}</p>
 
-                                <div class="btn-group">
-                                    <form action="{{ route('bikes.edit', $bike->id) }}">
-                                        <button class="btn btn-primary">Edit</button>
-                                    </form>
+                            <div class="btn-group" style="gap: 10px">
+                                <form action="{{ route('bikes.edit', $bike->id) }}">
+                                    <button class="btn btn-primary">Edit</button>
+                                </form>
 
-                                    <form action="{{ route('bikes.destroy', $bike->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger" type="submit">Delete</button>
-                                    </form>
-                                </div>
+                                <form action="{{ route('bikes.destroy', $bike->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
 
-                            <input type="checkbox" checked data-toggle="toggle" data-onstyle="outline-primary" data-offstyle="outline-secondary">
+                                <form action="" method="post">
+                                    @csrf
+                                    <button class="btn btn-primary">Active</button>
+                                </form>
+                            </div>
 
 
                         </div>

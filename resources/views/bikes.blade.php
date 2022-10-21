@@ -1,24 +1,10 @@
 @extends('layouts.app')
 
+
 @section('bikes')
     <div class="container">
         <div class="row justify-content-center">
-
-            <form action="{{ "/category" }}" method="get">
-                @csrf
-                <input class="btn btn-primary" type="submit" value="All-Road" name="category">
-                <input class="btn btn-primary" type="submit" value="Naked" name="category">
-                <input class="btn btn-primary" type="submit" value="Sport" name="category">
-                <input class="btn btn-primary" type="submit" value="Super-Sport" name="category">
-                <input class="btn btn-primary" type="submit" value="Tour" name="category">
-                <input class="btn btn-primary" type="submit" value="Sport-Tour" name="category">
-            </form>
-
-            <form action="{{ '/search' }}" type="get" class="input-group" style="display: flex">
-                <input type="search" name="search">
-                <input type="submit" class="btn btn-primary" placeholder="Search">
-            </form>
-
+            @include('partials.search')
 
             <div class="col-md-8">
                 @foreach($bikes as $bike)

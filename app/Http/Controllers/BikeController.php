@@ -17,24 +17,20 @@ class BikeController extends Controller
     public function index(Request $request)
     {
         $headTitle = 'Motoren';
-        $bikes = Bike::all();
+        $search_text = $request->input('search');
 
-//        $search_text = $_GET['query'];
-//
-//        if ($search_text) {
-//            $bikes = Bike::where('brand', 'LIKE', '%'.$search_text.'%')->get();
-////            dd($bikes);
-//        } else {
-//            $bikes = Bike::all();
-//        }
-
-
-
-
+        if ($search_text) {
+            $bikes = Bike::where('brand', 'LIKE', '%'.$search_text.'%')
+                ->orWhere('model', 'LIKE', '%'.$search_text.'%')
+                ->orWhere('category', 'LIKE', '%'.$search_text.'%')
+                ->orWhere('description', 'LIKE', '%'.$search_text.'%')
+                ->get();
+        } else {
+            $bikes = Bike::all();
+        }
 
         return view('bikes',
             compact('bikes', 'headTitle'));
-
     }
 
     /**
