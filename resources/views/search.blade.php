@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('category')
+@section('search')
     <div class="col-md-8">
-        @foreach($category as $bike)
+        @foreach($bikes as $bike)
+
             <div class="card" style="width: 18rem; margin: 10px;">
                 {{--                        <img src="{{ $bike->image }}" class="card-img-top" alt="...">--}}
                 <div class="card-body">

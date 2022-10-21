@@ -38,7 +38,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a href="/bikes" class="nav-link">All Bikes</a></li>
                     <li class="nav-item"><a href="/yourBikes" class="nav-link">Your Bikes</a></li>
-                    <li class="nav-item"><a href="{{ route('bike.create') }}" class="nav-link">Add New Bike</a></li>
+                    <li class="nav-item"><a href="{{ route('bikes.create') }}" class="nav-link">Add New Bike</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -88,6 +88,7 @@
         @yield('edit')
         @yield('add')
         @yield('category')
+        @yield('search')
     </main>
 </div>
 </body>
