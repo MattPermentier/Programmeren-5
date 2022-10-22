@@ -28,3 +28,4 @@ Route::get('/yourBikes', [YourBikeController::class, 'yourBikes']);
 Route::get('/bikes', [BikeController::class, 'index']);
 Route::resource('bikes', BikeController::class);
 Route::get('/category', [CategoryController::class, 'allRoad']);
+

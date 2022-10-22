@@ -15,7 +15,7 @@
                             <h6>{{ $bike->category }}</h6>
                             <p class="card-text">{{ $bike->description }}</p>
 
-                            <div class="btn-group" style="gap: 10px">
+                            <div class="btn-group" style="gap: 20px">
                                 <form action="{{ route('bikes.edit', $bike->id) }}">
                                     <button class="btn btn-primary">Edit</button>
                                 </form>
@@ -26,9 +26,13 @@
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
 
-                                <form action="" method="post">
-                                    @csrf
-                                    <button class="btn btn-primary">Active</button>
+                                {{--                                0 is active => 1 is not active--}}
+                                <form action="">
+                                    @if($bike->is_active == 0)
+                                        <button class="btn btn-success">Active</button>
+                                    @elseif($bike->is_active == 1)
+                                        <button class="btn btn-danger" type="submit">Not active</button>
+                                    @endif
                                 </form>
                             </div>
 

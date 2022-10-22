@@ -13,6 +13,7 @@ class Bike extends Model
 
     protected $fillable = [
         'user_id',
+        'is_active',
         'brand',
         'model',
         'category',

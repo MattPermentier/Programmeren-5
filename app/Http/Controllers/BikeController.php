@@ -26,7 +26,7 @@ class BikeController extends Controller
                 ->orWhere('description', 'LIKE', '%'.$search_text.'%')
                 ->get();
         } else {
-            $bikes = Bike::all();
+            $bikes = Bike::where('is_active', 0)->get();
         }
 
         return view('bikes',
@@ -61,7 +61,7 @@ class BikeController extends Controller
 //            'image' => 'required'
         ]);
 
-        Bike::create($request->all() + ['user_id' => auth()->id()]);
+        Bike::create($request->all() + ['user_id' => auth()->id()] + ['is_active']);
         return redirect(route('bikes.index'));
     }
 
