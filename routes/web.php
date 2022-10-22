@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
@@ -28,4 +29,4 @@ Route::get('/yourBikes', [YourBikeController::class, 'yourBikes']);
 Route::get('/bikes', [BikeController::class, 'index']);
 Route::resource('bikes', BikeController::class);
 Route::get('/category', [CategoryController::class, 'allRoad']);
-
+Route::get('bikes/{bikes}/active', [BikeController::class, 'active'])->name('bikes.active');

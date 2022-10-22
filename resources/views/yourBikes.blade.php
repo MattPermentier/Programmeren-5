@@ -27,9 +27,9 @@
                                 </form>
 
                                 {{--                                0 is active => 1 is not active--}}
-                                <form action="">
+                                <form action="{{ route('bikes.active', $bike->id) }}">
                                     @if($bike->is_active == 0)
-                                        <button class="btn btn-success">Active</button>
+                                        <button class="btn btn-success"  type="submit">Active</button>
                                     @elseif($bike->is_active == 1)
                                         <button class="btn btn-danger" type="submit">Not active</button>
                                     @endif

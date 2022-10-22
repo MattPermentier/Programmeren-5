@@ -20,10 +20,10 @@ class BikeController extends Controller
         $search_text = $request->input('search');
 
         if ($search_text) {
-            $bikes = Bike::where('brand', 'LIKE', '%'.$search_text.'%')
-                ->orWhere('model', 'LIKE', '%'.$search_text.'%')
-                ->orWhere('category', 'LIKE', '%'.$search_text.'%')
-                ->orWhere('description', 'LIKE', '%'.$search_text.'%')
+            $bikes = Bike::where('brand', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('model', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('category', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('description', 'LIKE', '%' . $search_text . '%')
                 ->get();
         } else {
             $bikes = Bike::where('is_active', 0)->get();
@@ -94,8 +94,8 @@ class BikeController extends Controller
         $bike = Bike::find($id);
 
         return view('edit',
-        compact('bike',
-        'headTitle'));
+            compact('bike',
+                'headTitle'));
     }
 
 
@@ -135,5 +135,24 @@ class BikeController extends Controller
         $bike->delete();
 
         return redirect(route('bikes.index'));
+    }
+
+    public function your()
+    {
+        echo 'test';
+    }
+
+    public function active($id)
+    {
+        $bike = Bike::find($id);
+
+        if ($bike->is_active == 0) {
+            $bike->update(['is_active' => 1]);
+        } else if ($bike->is_active == 1) {
+            $bike->update(['is_active' => 0]);
+        }
+        $bike->save();
+
+        return back();
     }
 }
