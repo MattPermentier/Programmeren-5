@@ -4,8 +4,10 @@
 @section('bikes')
     <div class="container">
         <div class="row justify-content-center">
-            @include('partials.search')
 
+            @if($numPosts >= 2)
+
+            @include('partials.search')
             <div class="col-md-8">
                 @foreach($bikes as $bike)
 
@@ -37,6 +39,13 @@
                     </div>
                 @endforeach
             </div>
+
+            @elseif($numPosts == 0)
+                    <h4>Voeg 2 motoren toe om toegang te krijgen tot alle motoren</h4>
+            @else
+                    <h4>Voeg nog 1 motor toe om toegang te krijgen tot alle motoren</h4>
+            @endif
+
         </div>
     </div>
     </div>

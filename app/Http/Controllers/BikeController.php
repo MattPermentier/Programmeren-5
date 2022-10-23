@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bike;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,8 +30,11 @@ class BikeController extends Controller
             $bikes = Bike::where('is_active', 0)->get();
         }
 
+        $user = Auth::user();
+        $numPosts = $user->posts()->count();
+
         return view('bikes',
-            compact('bikes', 'headTitle'));
+            compact('bikes', 'numPosts', 'headTitle'));
     }
 
     /**
@@ -135,11 +139,6 @@ class BikeController extends Controller
         $bike->delete();
 
         return redirect(route('bikes.index'));
-    }
-
-    public function your()
-    {
-        echo 'test';
     }
 
     public function active($id)
