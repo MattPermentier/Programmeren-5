@@ -63,7 +63,9 @@
                                 {{ Auth::user()->name }}
                             </a>
 
+
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+{{--                                Logout--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -73,7 +75,14 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+
+{{--                                Profile--}}
+                                <a class="dropdown-item" href="/profile">
+                                    Profile
+                                </a>
+
                             </div>
+
                         </li>
                     @endguest
                 </ul>
@@ -89,6 +98,7 @@
         @yield('add')
         @yield('category')
         @yield('search')
+        @yield('profile')
     </main>
 </div>
 </body>
