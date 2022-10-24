@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('category')
+@section('content')
     <div class="col-md-8">
         @foreach($category as $bike)
             <div class="card" style="width: 18rem; margin: 10px;">

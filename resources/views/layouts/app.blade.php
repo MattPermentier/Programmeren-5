@@ -92,13 +92,13 @@
 
     <main class="py-4">
         @yield('content')
-        @yield('bikes')
-        @yield('bike')
-        @yield('edit')
-        @yield('add')
-        @yield('category')
-        @yield('search')
-        @yield('profile')
+{{--        @yield('bikes')--}}
+{{--        @yield('bike')--}}
+{{--        @yield('edit')--}}
+{{--        @yield('add')--}}
+{{--        @yield('category')--}}
+{{--        @yield('search')--}}
+{{--        @yield('profile')--}}
     </main>
 </div>
 </body>

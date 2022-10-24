@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('bike')
+@section('content')
     <div class="col-sm-3">
         <div class="card mb-3">
             <div class="card-body">

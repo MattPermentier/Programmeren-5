@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('add')
+@section('content')
     <div class="row justify-content-center">
         <div class="col-md-6 col-md-offset-3">
             <h1>Add New Bike</h1>
