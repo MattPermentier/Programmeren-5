@@ -4,7 +4,6 @@
     <div class="col-md-8">
         @foreach($category as $bike)
             <div class="card" style="width: 18rem; margin: 10px;">
-                {{--                        <img src="{{ $bike->image }}" class="card-img-top" alt="...">--}}
                 <div class="card-body">
                     <h5 class="card-title"><a
                             href="{{ route('bikes.show', $bike->id) }}">{{ $bike->brand }} {{ $bike->model }}</a>

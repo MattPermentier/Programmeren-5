@@ -71,12 +71,6 @@
                     <span style="color:red">@error('description'){{ $message }} @enderror</span>
                 </div>
 
-{{--                <div class="form-group">--}}
-{{--                    <label for="">Image</label>--}}
-{{--                    <input type="text" class="form-control" name="image" placeholder="Image" value="{{ $bike->image }}">--}}
-{{--                    <span style="color:red">@error('image'){{ $message }} @enderror</span>--}}
-{{--                </div>--}}
-
                 <div class="form-group" style="margin-top: 10px">
                     <button type="submit" class="btn btn-primary btn-block">Update</button>
                 </div>
