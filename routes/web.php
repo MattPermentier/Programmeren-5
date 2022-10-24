@@ -2,13 +2,13 @@
 
 
 use App\Http\Controllers\ActiveController;
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\YourBikeController;
-use App\Models\Bike;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +31,5 @@ Route::get('/bikes', [BikeController::class, 'index']);
 Route::resource('bikes', BikeController::class);
 Route::get('/category', [CategoryController::class, 'allRoad']);
 Route::get('bikes/{bikes}/active', [BikeController::class, 'active'])->name('bikes.active');
-Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+Route::resource('user', UserController::class);

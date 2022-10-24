@@ -77,7 +77,7 @@
                                 </form>
 
 {{--                                Profile--}}
-                                <a class="dropdown-item" href="/profile">
+                                <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">
                                     Profile
                                 </a>
 
