@@ -19,8 +19,11 @@ class BikeController extends Controller
     public function index(Request $request)
     {
         $headTitle = 'Motoren';
+
+//        get the text from the searchbar
         $search_text = $request->input('search');
 
+//        check if search text belongs to table in DB
         if ($search_text) {
             $bikes = Bike::where('brand', 'LIKE', '%' . $search_text . '%')
                 ->orWhere('model', 'LIKE', '%' . $search_text . '%')
@@ -32,6 +35,8 @@ class BikeController extends Controller
         }
 
         $user = Auth::user();
+
+//        get the number of posts a user has made
         $numPosts = $user->posts()->count();
 
         return view('bikes',
