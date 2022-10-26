@@ -51,8 +51,8 @@ jobs:
       - name: Install NPM packages
         if: steps.node_modules-cache.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Build frontend
-        run: npm run development
+#      - name: Build frontend
+#        run: npm run development
       - name: Install PHP versions
         uses: shivammathur/setup-php@v2
         with:
