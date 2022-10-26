@@ -1,31 +1,49 @@
-name: Build and Deploy
-on:
-  push:
-    branches:
-      -   master
+name: run-tests
+
+on: [push, pull_request]
 
 jobs:
-  build:
-    name: Build and Deploy
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        php: [7.4]
+        laravel: [8.*, 5.8.*, 6.*, 7.*]
+        dependency-version: [prefer-lowest, prefer-stable]
+        include:
+          -   laravel: 8.*
+              testbench: 6.*
+          -   laravel: 7.*
+              testbench: 5.*
+          -   laravel: 6.*
+              testbench: 4.*
+          -   laravel: 5.8.*
+              testbench: 3.8.*
+
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+
     steps:
-      -   name: Checkout Repository
-          uses: actions/checkout@master
-      -   name: Setup Enviroment
+      -   name: Checkout code
+          uses: actions/checkout@v1
+
+      -   name: Cache dependencies
+          uses: actions/cache@v1
+          with:
+            path: ~/.composer/cache/files
+            key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      -   name: Setup PHP
           uses: shivammathur/setup-php@v2
           with:
-            php-version: '8.0'
-      -   name: Speed up the packages installation process
-          run: composer global require hirak/prestissimo
-      -   name: Install Packages
-          run: composer install --no-dev
-      -   name: Deploy to Server
-          uses: ngocquyhoang/deploy@laravel
-          with:
-            user: user
-            host: host
-            port: port
-            path: path
-            owner: owner
-          env:
-            DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+            php-version: ${{ matrix.php }}
+            extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+            coverage: none
+
+      -   name: Install dependencies
+          run: |
+            composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+            composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+      -   name: Execute tests
+          run: vendor/bin/phpunit
