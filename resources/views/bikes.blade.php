@@ -5,8 +5,9 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            @if($numPosts >= 2)
 
+{{--            only show when user is normal user and user has 2 or more bikes or user is admin--}}
+            @if($numPosts >= 2 && auth()->user()->role == 0 || auth()->user()->role == 1)
             @include('partials.search')
             <div class="col-md-8">
                 @foreach($bikes as $bike)

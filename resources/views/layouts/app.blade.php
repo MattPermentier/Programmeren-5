@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Bikes') }}</title>
+    <title>@yield('headTitle')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Bikes') }}
+                Motorbikes
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -65,7 +65,7 @@
 
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-{{--                                Logout--}}
+                                {{--                                Logout--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -76,7 +76,7 @@
                                     @csrf
                                 </form>
 
-{{--                                Profile--}}
+                                {{--                                Profile--}}
                                 <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">
                                     Profile
                                 </a>

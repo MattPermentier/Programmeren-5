@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/yourBikes', [YourBikeController::class, 'yourBikes']);
 Route::get('/bikes', [BikeController::class, 'index']);

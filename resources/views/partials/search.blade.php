@@ -10,5 +10,5 @@
 
 <form action="{{ route('bikes.index') }}" type="get" class="input-group" style="margin-top: 10px">
     <input type="search" name="search">
-    <input type="submit" class="btn btn-primary" placeholder="Search">
+    <input type="submit" class="btn btn-primary" value="Search">
 </form>
