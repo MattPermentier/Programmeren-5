@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function allRoad(Request $request)
     {
-
+        // check which category btn is clicked and get all the bikes with that category
         $clickedCategory = $request->input('category');
         $category = Bike::where('category', $clickedCategory)->get();
 

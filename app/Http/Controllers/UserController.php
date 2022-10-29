@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,7 +16,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = \Auth::user();
+        // get logged in user
+        $user = Auth::user();
         return view('profile',
             compact('user'));
     }
@@ -43,6 +45,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // check if input fields are filled in correctly and update the DB
         $request->validate([
             'name' => 'required',
             'email' => 'required'

@@ -68,9 +68,9 @@ class BikeController extends Controller
             'model' => 'required',
             'category' => 'required',
             'description' => 'required',
-//            'image' => 'required'
         ]);
 
+        // save input in DB with user id based on logged in user
         Bike::create($request->all() + ['user_id' => auth()->id()] + ['is_active']);
         return redirect(route('bikes.index'));
     }
@@ -118,12 +118,12 @@ class BikeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // check the input fields and update the info of the bike based on which bike is clicked
         $request->validate([
             'brand' => 'required',
             'model' => 'required',
             'category' => 'required',
             'description' => 'required',
-//            'image' => 'required'
         ]);
 
         $bike = Bike::find($id);
@@ -141,6 +141,7 @@ class BikeController extends Controller
      */
     public function destroy($id)
     {
+        // get id of clicked bike and delete
         $bike = Bike::find($id);
         $bike->delete();
 
@@ -149,6 +150,7 @@ class BikeController extends Controller
 
     public function active($id)
     {
+        // check the clicked bike, change the value to be (in)active and refresh the page.
         $bike = Bike::find($id);
 
         if ($bike->is_active == 0) {

@@ -11,6 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    // check if user is logged in, else return to login page.
     public function __construct()
     {
         $this->middleware('auth');
