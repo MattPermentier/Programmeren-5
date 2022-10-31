@@ -6,7 +6,6 @@
             <div class="col-md-6 col-md-offset-3" style="margin-top:20px">
 {{--                <h2 class="text-center">{{ $headTitle }}</h2>--}}
                 <form action="{{route('user.update', $user->id )}}" method="post">
-
                     @method('put')
                     @csrf
 
