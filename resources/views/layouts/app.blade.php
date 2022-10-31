@@ -65,6 +65,17 @@
 
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                {{--                                Profile--}}
+                                <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">
+                                    Profile
+                                </a>
+
+                                @if(auth()->user()->role == 1)
+                                    <a class="dropdown-item" href="{{ '/adminPanel' }}">
+                                        Admin Panel
+                                    </a>
+                                @endif
+
                                 {{--                                Logout--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -76,10 +87,7 @@
                                     @csrf
                                 </form>
 
-                                {{--                                Profile--}}
-                                <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">
-                                    Profile
-                                </a>
+
 
                             </div>
 

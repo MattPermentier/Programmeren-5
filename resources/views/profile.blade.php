@@ -14,7 +14,7 @@
                         <label for="">Name</label>
                         <input type="text" class="form-control" name="name"
                                placeholder="Enter Name"
-                               value="{{$user->name}}">
+                               value="{{ $user->name }}">
                         <span style="color:red">@error('name'){{ $message }} @enderror</span>
                     </div>
 
@@ -22,7 +22,7 @@
                         <label for="">E-mail</label>
                         <input type="text" class="form-control" name="email"
                                placeholder="Enter E-mail"
-                               value="{{$user->email}}">
+                               value="{{ $user->email }}">
                         <span style="color:red">@error('email'){{ $message }} @enderror</span>
                     </div>
 

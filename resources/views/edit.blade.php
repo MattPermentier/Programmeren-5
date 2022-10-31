@@ -54,7 +54,7 @@
                     <label for="">Category</label>
                     <select name="category" class="form-control" placeholder="Category">
                         <option value="{{ $bike->category }}">{{ $bike->category }}</option>
-                        <option value="All-Road">All-Road</option>
+                        <option value="All-Road" >All-Road</option>
                         <option value="Naked">Naked</option>
                         <option value="Sport">Sport</option>
                         <option value="Super-Sport">Super-Sport</option>

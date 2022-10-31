@@ -17,7 +17,7 @@
                             <h5 class="card-title"><a
                                     href="{{ route('bikes.show', $bike->id) }}">{{ $bike->brand }} {{ $bike->model }}</a>
                             </h5>
-                            <h6>{{ $bike->category }}</h6>
+                            <h6>Category: {{ $bike->category }}</h6>
                             <p class="card-text">{{ $bike->description }}</p>
 
                             @if(auth()->user()->role == 1)
