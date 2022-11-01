@@ -30,6 +30,6 @@ Route::get('/yourBikes', [YourBikeController::class, 'yourBikes']);
 Route::get('/bikes', [BikeController::class, 'index']);
 Route::resource('bikes', BikeController::class);
 Route::get('/category', [CategoryController::class, 'allRoad']);
-Route::get('bikes/{bikes}/active', [BikeController::class, 'active'])->name('bikes.active');
+Route::post('bikes/{bikes}/active', [BikeController::class, 'active'])->name('bikes.active');
 Route::resource('user', UserController::class);
 Route::get('/adminPanel', [AdminController::class, 'admin']);
