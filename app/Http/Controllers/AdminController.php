@@ -11,7 +11,6 @@ class AdminController extends Controller
     public function admin()
     {
         if (auth()->user()->role == 1) {
-            echo 'admin';
 
         $bikes = Bike::all();
 
