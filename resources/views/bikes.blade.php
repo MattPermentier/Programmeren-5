@@ -20,19 +20,19 @@
                             <h6>Category: {{ $bike->category }}</h6>
                             <p class="card-text">{{ $bike->description }}</p>
 
-                            @if(auth()->user()->role == 1)
-                                <div class="btn-group">
-                                    <form action="{{ route('bikes.edit', $bike->id) }}">
-                                        <button class="btn btn-primary">Edit</button>
-                                    </form>
+{{--                            @if(auth()->user()->role == 1)--}}
+{{--                                <div class="btn-group">--}}
+{{--                                    <form action="{{ route('bikes.edit', $bike->id) }}">--}}
+{{--                                        <button class="btn btn-primary">Edit</button>--}}
+{{--                                    </form>--}}
 
-                                    <form action="{{ route('bikes.destroy', $bike->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger" type="submit">Delete</button>
-                                    </form>
-                                </div>
-                            @endif
+{{--                                    <form action="{{ route('bikes.destroy', $bike->id) }}" method="post">--}}
+{{--                                        @csrf--}}
+{{--                                        @method('DELETE')--}}
+{{--                                        <button class="btn btn-danger" type="submit">Delete</button>--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
 
 
                         </div>
