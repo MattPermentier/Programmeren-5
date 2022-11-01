@@ -53,7 +53,7 @@ jobs:
       matrix:
         server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrtix) }}
       steps:
-        - uses: actions/download-artifacts@v2
+        - uses: actions/download-artifacts@v3
           with:
             name: app-build
 
