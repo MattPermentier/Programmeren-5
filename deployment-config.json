@@ -6,7 +6,7 @@
         "password": "Github1Actions",
         "port": "22",
         "beforeHooks": "",
-        "afterHooks": "",;
+        "afterHooks": "",
         "path": "/var/ww/html"
     }
 ]
