@@ -5,7 +5,7 @@
         "username": "root",
         "password": "Github1Actions",
         "port": "22",
-        "beforeHooks": "echo $GITh",
+        "beforeHooks": "echo $GITH",
         "afterHooks": "",
         "path": "/var/www/html"
     }
