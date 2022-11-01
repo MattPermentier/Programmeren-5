@@ -74,7 +74,7 @@ jobs:
         with:
           host: ${{ matrix.server.ip }}
           username: ${{ matrix.server.username }}
-          passphrase: ${{ secrets.server.password }}
+          passphrase: ${{ secrets.DROPLET_PASSWORD }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ matrix.server.port }}
           source: ${{ github.sha }}.tar.gz
