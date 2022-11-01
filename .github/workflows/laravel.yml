@@ -1,4 +1,4 @@
-name: Laravel
+name: Deploy Application
 
 on:
   push:
@@ -38,35 +38,35 @@ jobs:
         run: vendor/bin/phpunit
 
 
-      - name: Create deployment artifact
-        env:
-        GITHUB_SHA: ${{ github.sha }}
-        run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules *
-
-      - name: Store artifact for distribution
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-build
-          path: ${{ github.sha }}.tar.gz
-
-      - name: Export deployment matrix
-        id: export-deployment-matrix
-        run: |
-          JSON="${cat ./deployment-config.json)"
-          JSON="${JSON//'%'/'%25'}"
-          JSON="${JSON//$'\n'/'%0A'}"
-          JSON="${JSON//$'\r'/'%0D'}"
-          echo "::set-output name=deployment-matrix::$JSON"
-
-  prepare-release-on-server:
-    runs-on: ubuntu-latest
-    needs: create-deployment-artifacts
-    strategy:
-      matrix:
-        server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrtix) }}
-      steps:
-        - uses: actions/download-artifacts@v2
-          with:
-            name: app-build
+#      - name: Create deployment artifact
+#        env:
+#        GITHUB_SHA: ${{ github.sha }}
+#        run: tar -czf "${GITHUB_SHA}".tar.gz --exclude=*.git --exclude=node_modules *
+#
+#      - name: Store artifact for distribution
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: app-build
+#          path: ${{ github.sha }}.tar.gz
+#
+#      - name: Export deployment matrix
+#        id: export-deployment-matrix
+#        run: |
+#          JSON="${cat ./deployment-config.json)"
+#          JSON="${JSON//'%'/'%25'}"
+#          JSON="${JSON//$'\n'/'%0A'}"
+#          JSON="${JSON//$'\r'/'%0D'}"
+#          echo "::set-output name=deployment-matrix::$JSON"
+#
+#  prepare-release-on-server:
+#    runs-on: ubuntu-latest
+#    needs: create-deployment-artifacts
+#    strategy:
+#      matrix:
+#        server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrtix) }}
+#      steps:
+#        - uses: actions/download-artifacts@v2
+#          with:
+#            name: app-build
 
 
