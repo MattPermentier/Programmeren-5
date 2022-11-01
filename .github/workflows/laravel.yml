@@ -121,6 +121,7 @@ jobs:
           envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH
           script: |
             ${{ matrix.server.beforeHooks }}
+
     activate-release:
       name: "${{ matrix.server.name }}: Activate release"
       runs-on: ubuntu-latest
@@ -141,10 +142,13 @@ jobs:
           with:
             host: ${{ matrix.server.ip }}
             username: ${{ matrix.server.username }}
-            password: ${{ matrix.server.password }}
+            key: ${{ secrets.SSH_KEY }}
             port: ${{ matrix.server.port }}
             envs: GITHUB_SHA,RELEASE_PATH,ACTIVE_RELEASE_PATH,STORAGE_PATH,BASE_PATH,ENV_PATH,LARAVEL_ENV
             script: |
+              printf "%s" "$LARAVEL_ENV" > "${BASE_PATH}/.env"
+              ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
+              ln -s -f $STORAGE_PATH $RELEASE_PATH
               ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
               service php8.0-fpm reload
 
