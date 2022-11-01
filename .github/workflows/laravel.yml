@@ -9,7 +9,11 @@ on:
 jobs:
   laravel-tests:
 
+  create-deployment-artifacts:
+    name: Create deployment artifacts
     runs-on: ubuntu-latest
+    outputs:
+      deployment-matrix: ${{ steps.export-deployment-matrix.outputs.deployment-matrix }}
 
     steps:
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
@@ -34,6 +38,24 @@ jobs:
           DB_DATABASE: database/database.mysql
         run: vendor/bin/phpunit
 
+      - name: Export deployment matrix
+        id: export-deployment-matrix
+        run: |
+          JSON="${cat ./deployment-config.json)"
+          JSON="${JSON//'%'/'%25'}"
+          JSON="${JSON//$'\n'/'%0A'}"
+          JSON="${JSON//$'\r'/'%0D'}"
+          echo "::set-output name=deployment-matrix::$JSON
+  prepare-release-on-server:
+    runs-on: ubuntu-latest
+    needs: create-deployment-artifacts
+    strategy:
+      matrix:
+        server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrtix) }}
+      steps:
+        - uses: actions/download-artifacts@v2
+          with:
+            name: app-build
 
 
 
