@@ -58,15 +58,15 @@ jobs:
           JSON="${JSON//$'\r'/'%0D'}"
           echo "::set-output name=deployment-matrix::$JSON"
 
-#  prepare-release-on-server:
-#    runs-on: ubuntu-latest
-#    needs: create-deployment-artifacts
-#    strategy:
-#      matrix:
-#        server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrtix) }}
-#      steps:
-#        - uses: actions/download-artifacts@v2
-#          with:
-#            name: app-build
+  prepare-release-on-server:
+    runs-on: ubuntu-latest
+    needs: create-deployment-artifacts
+    strategy:
+      matrix:
+        server: ${{ fromJson(needs.create-deployment-artifacts.outputs.deployment-matrtix) }}
+      steps:
+        - uses: actions/download-artifacts@v2
+          with:
+            name: app-build
 
 
