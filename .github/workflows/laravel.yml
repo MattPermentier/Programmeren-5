@@ -74,8 +74,7 @@ jobs:
         with:
           host: ${{ matrix.server.ip }}
           username: ${{ matrix.server.username }}
-          passphrase: ${{ secrets.DROPLET_PASSWORD }}
-          key: ${{ secrets.SSH_KEY }}
+          password: ${{ matrix.server.password }}
           port: ${{ matrix.server.port }}
           source: ${{ github.sha }}.tar.gz
           target: ${{ matrix.server.path }}/artifacts // /var/www/html/artifacts
